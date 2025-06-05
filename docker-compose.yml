@@ -1,0 +1,51 @@
+version: '3.8'
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - API_TOKEN=${API_TOKEN}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_REST_URL=${REDIS_REST_URL}
+      - REDIS_REST_PORT=${REDIS_REST_PORT}
+      - OPENAI_CONFIGS=${OPENAI_CONFIGS}
+      - ANTHROPIC_CONFIGS=${ANTHROPIC_CONFIGS}
+      - TOGETHER_CONFIGS=${TOGETHER_CONFIGS}
+      - FIREWORKS_CONFIGS=${FIREWORKS_CONFIGS}
+      - REPLICATE_CONFIGS=${REPLICATE_CONFIGS}
+      - HYPERBOLIC_CONFIGS=${HYPERBOLIC_CONFIGS}
+      - DEEPINFRA_CONFIGS=${DEEPINFRA_CONFIGS}
+      - OPENROUTER_CONFIGS=${OPENROUTER_CONFIGS}
+      - AWAN_CONFIGS=${AWAN_CONFIGS}
+      - KLUSTER_AI_CONFIGS=${KLUSTER_AI_CONFIGS}
+      - LAMBDA_LABS_CONFIGS=${LAMBDA_LABS_CONFIGS}
+      - AVIAN_IO_CONFIGS=${AVIAN_IO_CONFIGS}
+      - NOVITA_AI_CONFIGS=${NOVITA_AI_CONFIGS}
+      - INFERENCE_NET_CONFIGS=${INFERENCE_NET_CONFIGS}
+      - UV_THREADPOOL_SIZE=32
+      - NODE_OPTIONS="--max-old-space-size=6144"
+      - ONNX_BACKEND=cpu
+      - SECURE_COOKIES=true
+    deploy:
+      resources:
+        limits:
+          memory: 6GB
+    volumes:
+      - model_cache:/app/.cache
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 60s
+      timeout: 20s
+      retries: 3
+      start_period: 80s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "500m"
+        max-file: "3"
+
+volumes:
+  model_cache:
