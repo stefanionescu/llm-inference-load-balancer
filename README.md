@@ -16,10 +16,10 @@ A production-grade API service for handling AI inference requests across multipl
 The API is designed with a multi-layered architecture that provides high availability and intelligent request distribution:
 
 ```
-┌─────────────────┐    ┌─────────────────┐      ┌─────────────────┐
-│   Load Balancer │    │   Load Balancer │      │   Load Balancer │
-│   (DigitalOcean)│────│   (Server 1)    │──────│   (Server 2)    │
-└─────────────────┘    └─────────────────┘      └─────────────────┘
+┌─────────────────┐    ┌─────────────────┐      
+│  Load Balancer  │    │   Bare Metal    │      
+│  (DigitalOcean) │────│   (Machine 1)   │──────────────┐
+└─────────────────┘    └─────────────────┘              │
                              │                          │
                       ┌──────┴──────┐            ┌──────┴──────┐
                       │ Roleplay LB │            │ Content LB  │
@@ -380,8 +380,4 @@ To add more servers:
 - Monitor Redis performance
 - Check concurrent request limits
 - Review provider response times
-
-## License
-
-MIT License - see LICENSE file for details.
 
