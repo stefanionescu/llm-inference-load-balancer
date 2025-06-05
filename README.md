@@ -1,6 +1,6 @@
 # LLM Roleplay Inference API
 
-A production-grade API service for handling AI inference requests across multiple providers with intelligent load balancing, failover capabilities, and Redis-based rate limiting.
+A production-grade API service for handling AI inference requests across multiple providers with intelligent load balancing, failover capabilities, and Redis-based rate limiting. Initially meant to be used in [this project](https://github.com/stefanionescu/llm-roleplay-webapp) but you can use the code for any LLM project.
 
 ## Table of Contents
 - [System Architecture](#system-architecture)
