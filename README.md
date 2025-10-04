@@ -9,6 +9,8 @@ A production-grade API service for handling AI inference requests across multipl
 - [Configuration](#configuration)
 - [Maintenance](#maintenance)
 - [API Endpoints](#api-endpoints)
+- [Maintenance](#maintenance)
+- [Troubleshooting](#troubleshooting)
 
 ## Load Balancer Overview
 
