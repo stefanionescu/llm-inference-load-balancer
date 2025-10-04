@@ -11,30 +11,6 @@ A production-grade API service for handling AI inference requests across multipl
 - [Maintenance](#maintenance)
 - [API Endpoints](#api-endpoints)
 
-## System Architecture
-
-The API is designed with a multi-layered architecture that provides high availability and intelligent request distribution:
-
-```
-┌─────────────────┐    ┌─────────────────┐      
-│  Load Balancer  │    │   Bare Metal    │      
-│  (DigitalOcean) │────│   (Machine 1)   │──────────────┐
-└─────────────────┘    └─────────────────┘              │
-                             │                          │
-                      ┌──────┴──────┐            ┌──────┴──────┐
-                      │ Roleplay LB │            │ Content LB  │
-                      └─────────────┘            └─────────────┘
-                              │                           │
-                  ┌───────────┼─────────────┐             │───────────┐
-                  │           │             │        ┌────▼────┐      │
-          ┌───────▼───┐ ┌─────▼─────┐ ┌─────▼─────┐  │ OpenAI  │ ┌────▼─────┐
-          │  Groq     │ │ Together  │ │OpenRouter │  │         │ │Anthropic │
-          │ Fireworks │ │ Replicate │ │ AvianIO   │  │         │ │          │
-          │ DeepInfra │ │ Hyperbolic│ │ AwanLLM   │  └─────────┘ └──────────┘
-          │    ...    │ │    ...    │ │   ...     │
-          └───────────┘ └───────────┘ └───────────┘
-```
-
 ## Load Balancer Overview
 
 The system features two specialized load balancers:
