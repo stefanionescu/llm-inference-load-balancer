@@ -3,7 +3,6 @@
 A production-grade API service for handling AI inference requests across multiple providers. It uses load balancing, failover capabilities, and Redis-based rate limiting. Initially meant to be used in [this project](https://github.com/stefanionescu/llm-roleplay-webapp) but you can adapt it to your own app.
 
 ## Table of Contents
-- [System Architecture](#system-architecture)
 - [Load Balancer Overview](#load-balancer-overview)
 - [Environment Setup](#environment-setup)
 - [Deployment Guide](#deployment-guide)
